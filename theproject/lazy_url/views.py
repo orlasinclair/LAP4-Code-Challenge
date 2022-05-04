@@ -17,9 +17,9 @@ def home(request):
             new_url.save()
             data = {
                 'form': form,
-                'new_url': new_url
+                'new_url': new_url,
+                'long_url': long_url
             }
-            print(new_url)
             return render(request, 'base.html', data)
     else:
         form = UrlForm()

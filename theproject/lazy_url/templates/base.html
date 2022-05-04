@@ -10,7 +10,7 @@
 <body>
   {% block content %}
     <h1>Welcome to Lazy-url!!</h1>
-    
+
     <form method="POST">
       {% csrf_token %}
       {{ form.as_p }}
@@ -19,7 +19,7 @@
    
 
     {% if new_url %}
-    <p>{{new_url}}</p>
+    <a href="{{long_url}}">{{new_url}}</a>
     {% endif %}
  
     
