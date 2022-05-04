@@ -5,22 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <title>Lazy-url</title>
 </head>
 <body>
   {% block content %}
-    <h1>Welcome to Lazy-url!!</h1>
+    <div class="greeting">
+      <h1>Lazy-url!</h1>
+      <h2>Get shorter, more convenient urls below</h2>
+    </div>
 
-    <form method="POST">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" value="Submit Url">
-    </form>
+    <div class="form">
+      <h4>Enter the URL you want to shorten:</h4>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input id="button" type="submit" value="Shorten Url">
+      </form>
+    </div>
    
-
+   
     {% if new_url %}
-    <a href="{{long_url}}">{{new_url}}</a>
+    <div class="result">
+      <h4>Here's your new URL:</h4>
+      <a href="{{long_url}}">http://127.0.0.1:8000/{{new_url}}</a>
+    </div>
     {% endif %}
+
  
     
   {% endblock content %}
