@@ -11,8 +11,8 @@ def home(request):
         form = UrlForm(request.POST)
         if form.is_valid():
             short_url = ''.join(random.choice(string.ascii_letters) for num in range(10))
-            url = form.cleaned_data['url']
-            new_url = UrlData(url=url, short_url=short_url)
+            long_url = form.cleaned_data['long_url']
+            new_url = UrlData(long_url=long_url, short_url=short_url)
             new_url.save()
             return redirect('lazy-url-home')
     else:
