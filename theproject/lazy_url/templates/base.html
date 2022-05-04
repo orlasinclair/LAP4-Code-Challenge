@@ -7,7 +7,14 @@
     <title>Lazy-url</title>
 </head>
 <body>
+  {% block content %}
     <h1>Welcome to Lazy-url!!</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Submit Url">
+    </form>
+  {% endblock content %}
 
 </body>
 </html>

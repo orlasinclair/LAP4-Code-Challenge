@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from theproject.lazy_url.models import UrlData
+from .models import UrlData
 from .form import UrlForm
 import random, string
 
