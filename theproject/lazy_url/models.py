@@ -5,4 +5,4 @@ class UrlData(models.Model):
     short_url = models.CharField(max_length=15, unique=True)
 
     def __str__(self):
-        return f'{self.long_url} becomes {self.short_url}'
+        return self.short_url

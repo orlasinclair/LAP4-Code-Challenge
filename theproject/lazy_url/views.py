@@ -15,10 +15,16 @@ def home(request):
             long_url = form.cleaned_data['long_url']
             new_url = UrlData(long_url=long_url, short_url=short_url)
             new_url.save()
+            data = {
+                'form': form,
+                'new_url': new_url
+            }
             print(new_url)
-            return redirect('lazy-url-home')
+            return render(request, 'base.html', data)
     else:
         form = UrlForm()
-        data = {'form': form}
-
-    return render(request, 'base.html', data)
+    data = UrlData.objects.all()
+    context = {
+        'form': form
+    }
+    return render(request, 'base.html', context)
