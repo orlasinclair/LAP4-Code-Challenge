@@ -10,10 +10,12 @@ def home(request):
     if request.method  == 'POST':
         form = UrlForm(request.POST)
         if form.is_valid():
-            short_url = ''.join(random.choice(string.ascii_letters) for num in range(10))
+            short = ''.join(random.choice(string.ascii_letters) for num in range(10))
+            short_url = f"www.lazyurl/{short}"
             long_url = form.cleaned_data['long_url']
             new_url = UrlData(long_url=long_url, short_url=short_url)
             new_url.save()
+            print(new_url)
             return redirect('lazy-url-home')
     else:
         form = UrlForm()
